@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Dashboard Pro</title>
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+
+  <div class="main-container">
+    <div class="header">
+      <div class="logo-badge"><span>&lt;&gt;</span> Dark.Pro</div>
+      <button class="btn-menu" id="btnOpenMenu" type="button">☰</button>
+    </div>
+
+    <!-- 1. LOBBY UTAMA -->
+    <div id="pageLobby" class="page-section active">
+      <div class="lobby-header">
+        <div class="lobby-badge">• SYSTEM DASHBOARD</div>
+        <h1>Welcome, <span id="welcomeNameText">User</span></h1>
+      </div>
+      <div class="am-main-card" style="padding: 30px 20px;">
+        <h2 style="font-size: 16px; margin-bottom: 10px; color: var(--primary);">✨ Status Sistem: ONLINE</h2>
+        <p style="font-size: 13px; color: var(--subtext); line-height: 1.6;">Gunakan menu navigasi (☰) di pojok kanan atas untuk mengakses semua modul.</p>
+      </div>
+    </div>
+
+    <!-- 2. ALIGHT MOTION PREMIUM -->
+    <div id="pageAM" class="page-section">
+      <!-- STEP 1: FORM INPUT EMAIL -->
+      <div class="am-main-card" id="cardStep1">
+        <div class="am-icon-box">☆</div>
+        <h1 class="am-title">Alight Motion Premium</h1>
+        <p class="am-desc">Aktifkan premium di akun Alight Motion kamu.<br>Masukkan email <b>akun Alight Motion</b> kamu.</p>
+        
+        <div class="am-input-group">
+          <label>Email Alight Motion</label>
+          <div class="am-input-wrapper">
+            <input type="email" id="amEmailInput" placeholder="masukkan alamat emailmu">
+          </div>
+        </div>
+
+        <button class="action-btn" id="btnKirimAM" type="button">Kirim Magic Link ➔</button>
+
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="terminal-dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+            <div class="terminal-title">dark_v1 - terminal</div>
+            <div class="terminal-status" id="termStatus1">IDLE</div>
+          </div>
+          <div class="terminal-body" id="termBody1">
+            <div class="log-line text-muted">Aplikasi siap. Silakan masukkan email target...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2: FORM VERIFIKASI -->
+      <div class="am-main-card" id="cardStep2" style="display: none;">
+        <div class="am-icon-box" style="box-shadow: 0 0 25px rgba(236, 72, 153, 0.3); border-color: rgba(236, 72, 153, 0.4); color: #f43f5e;">🔗</div>
+        <h1 class="am-title" style="margin-bottom: 6px;">Verifikasi Email</h1>
+        <p class="am-desc" style="margin-bottom: 12px;">Kami sudah mengirim link verifikasi ke <br><b id="targetEmailText" style="color: #fff;">email@gmail.com</b>.<br>Buka email, copy link verifikasi, lalu paste di bawah.</p>
+        
+        <div class="info-banner">
+          <div class="info-title">
+            <span>ⓘ</span> Link verifikasi biasanya berisi <code>oobCode=...</code> atau domain <code>alight-creative.firebaseapp.com</code>. Copy seluruh link dari email kamu.
+          </div>
+          <div class="spam-notice">
+            ⚡ <b>Perhatian:</b> Cek juga folder <b>Spam</b> atau <b>Promosi</b> di Gmail jika email tidak muncul di kotak masuk utama dalam 1-2 menit.
+          </div>
+        </div>
+
+        <div class="am-input-group">
+          <label>Link Verifikasi</label>
+          <div class="am-input-wrapper">
+            <input type="text" id="amLinkInput" placeholder="https://alight-creative.firebaseapp.com/__/auth/action?oobCode=...">
+          </div>
+        </div>
+
+        <button class="action-btn btn-white" id="btnVerifyAM" type="button">Verifikasi & Premium ✓</button>
+        <button class="action-btn btn-secondary" id="btnGantiEmail" type="button">← Ganti Email</button>
+
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="terminal-dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+            <div class="terminal-title">dark_v1 - terminal</div>
+            <div class="terminal-status" id="termStatus2">WAITING</div>
+          </div>
+          <div class="terminal-body" id="termBody2">
+            <div class="log-line success" id="termSuccessLine">✓ Magic link terkirim</div>
+            <div class="log-line text-muted">Menunggu link verifikasi di-paste...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. NONTON ANIME (DENGAN PEMUTAR VIDEO) -->
+    <div id="pageAnime" class="page-section">
+      <div class="am-main-card">
+        <div class="am-icon-box" style="color: #a855f7; box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);">🎬</div>
+        <h1 class="am-title">Anime Stream</h1>
+        <p class="am-desc">Tonton anime favoritmu langsung dari Dark.Pro</p>
+        
+        <div id="animeList" class="anime-grid">
+          <!-- Load via anime.js -->
+        </div>
+
+        <!-- Pemutar Video Pop-up / Embed -->
+        <div id="videoModal" style="display: none; margin-top: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span id="playingTitle" style="font-weight: bold; font-size: 13px; color: #fff;">Sedang Memutar...</span>
+            <button id="btnCloseVideo" type="button" style="background: rgba(239, 68, 68, 0.2); border: 1px solid var(--danger); color: #fff; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 11px;">✕ Tutup</button>
+          </div>
+          <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--border);">
+            <iframe id="animePlayerFrame" src="" style="position: absolute; top:0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen allow="autoplay"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. DARK AI -->
+    <div id="pageAI" class="page-section">
+      <div class="am-main-card">
+        <div class="am-icon-box" style="color: #10b981; box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);">🤖</div>
+        <h1 class="am-title">Dark AI</h1>
+        <p class="am-desc">Asisten AI cerdas milikmu</p>
+        
+        <div class="chat-container" id="chatBoxAI">
+          <div class="chat-msg ai-msg">Halo! Aku Dark AI. Ada yang bisa kubantu hari ini?</div>
+        </div>
+        
+        <div class="am-input-wrapper" style="margin-bottom: 0; margin-top: 15px; border-radius: 30px;">
+          <input type="text" id="inputAI" placeholder="Ketik pesan..." style="padding: 12px 16px;">
+          <button class="btn-send-lobby" id="btnSendAI" type="button">➤</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MENU OVERLAY -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-container">
+      <div class="menu-box">
+        <div class="menu-header">
+          <span style="font-weight: 700; font-size: 15px; color: #fff;">Navigasi Sistem</span>
+          <button class="btn-close" id="btnCloseMenu" type="button">✕</button>
+        </div>
+        <div class="menu-item" onclick="switchPage('pageLobby')">
+          <div class="m-icon">🏠</div><div class="m-title">Lobby Utama</div>
+        </div>
+        <div class="menu-item" onclick="switchPage('pageAM')">
+          <div class="m-icon">☆</div><div class="m-title">AM Premium</div>
+        </div>
+        <div class="menu-item" onclick="switchPage('pageAnime')">
+          <div class="m-icon" style="color:#a855f7;">🎬</div><div class="m-title">Nonton Anime</div>
+        </div>
+        <div class="menu-item" onclick="switchPage('pageAI')">
+          <div class="m-icon" style="color:#10b981;">🤖</div><div class="m-title">Dark AI Chat</div>
+        </div>
+        <div class="menu-item" id="btnLogout" style="border-top: 1px solid var(--border); margin-top: 10px;">
+          <div class="m-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);">🚪</div>
+          <div class="m-title" style="color: var(--danger);">Keluar Akun</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastBox" class="toast-msg"></div>
+
+  <!-- SCRIPT FILES -->
+  <script src="script.js?v=3"></script>
+  <script src="anime.js?v=3"></script>
+  <script src="ai.js?v=3"></script>
+</body>
+</html>
