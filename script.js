@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. LOGIKA ALIGHT MOTION API (AXZYEDEV V1)
   // ==========================================
   const API_BASE = "https://axzyedev.biz.id/api/v1/send-magic-link";
-  const API_KEY = "AzaGanteng-UXRvnfELcX9YXhuHJQKBVKIoOTLiG9TR";
+  const API_KEY = "AzaGanteng-aXYiIUMNmJJcGMSffU4aJInb78EPfEe7";
   const HEADERS = { "Content-Type": "application/json", "X-API-Key": API_KEY };
 
   const cardStep1 = document.getElementById('cardStep1');
